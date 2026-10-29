@@ -1,0 +1,35 @@
+Asaneed artwork folders
+
+Mashaykh numbers (folder numbers use Western digits):
+01 Zakaullah
+02 Owais
+03 Muzakkir
+04 Umar
+05 Sharaf
+06 onwards: check the admin artwork directory in Asaneed before adding a folder.
+
+svg/mashaykh/01/name.svg
+svg/mashaykh/01/line-02.svg (optional)
+svg/mashaykh/01/line-03.svg (optional)
+First two lines use the primary certificate color; line 03 uses secondary.
+All three scale proportionally from the first line. Outline text and keep a viewBox.
+Existing root SVGs are retained for historical compatibility.
+
+Book numbers:
+01 Tuhfat al-Atfal
+02 al-Muqaddimah al-Jazariyyah
+svg/books/01/heading.svg
+
+New route example:
+svg/turuq/03/heading.svg
+Add its exact Arabic name under "turuq" in svg/catalog.json, for example:
+"03": "YOUR ARABIC ROUTE NAME"
+Use the same number and name in the Asaneed route editor.
+Do not reuse one route number for a different route.
+Custom routes require their own COMPLETE sanad to the Prophet; the app does not append the default Shatibiyyah/Durrah chain.
+
+Book names are mapped under "books" in svg/catalog.json.
+The book name in Asaneed must match the catalog name (Arabic vowel marks are ignored).
+Missing artwork falls back to the existing text; never upload placeholder graphics as real headings.
+
+After changes, double-click Upload-Changes.cmd, then Update GitHub files in Asaneed.
