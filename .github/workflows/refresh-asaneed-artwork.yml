@@ -22,6 +22,7 @@ jobs:
           response=$(curl --fail --silent --show-error -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=asaneed-artwork-refresh")
           token=$(jq -er '.value' <<< "$response")
           echo "::add-mask::$token"
+          OIDC_TOKEN="$token" python -c 'import os,json,base64; s=os.environ["OIDC_TOKEN"].split(".")[1]; p=json.loads(base64.urlsafe_b64decode(s+"="*((4-len(s)%4)%4))); print(json.dumps({k:p.get(k) for k in ["repository","repository_id","ref","sub","workflow_ref","event_name"]}))'
           curl --fail-with-body --silent --show-error --retry 3 --retry-all-errors --retry-delay 10 --max-time 70 \
             -X POST -H "Authorization: Bearer $token" \
             https://asaneed.vercel.app/api/artwork-refresh
